@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 3055
 
 # Comando para ejecutar la aplicación
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "3055"]
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "3072"]
