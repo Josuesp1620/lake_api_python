@@ -22,12 +22,12 @@ jobs:
 
     # Pasos para detener y eliminar contenedores Docker
     - name: Stop and remove container
-      run: sudo docker stop backend_atu_lake_api && docker rm backend_atu_lake_api || true
+      run: docker stop backend_atu_lake_api && docker rm backend_atu_lake_api || true
 
     # Pasos para eliminar imágenes Docker
     - name: Remove Docker image
-      run: sudo docker rmi -f backend_atu_lake_api || true
+      run: docker rmi -f backend_atu_lake_api || true
 
     # Pasos para ejecutar docker-compose
     - name: Run docker-compose
-      run: sudo docker compose -f docker-compose-lake-api.yml up -d
+      run: docker compose -f docker-compose-lake-api.yml up -d
