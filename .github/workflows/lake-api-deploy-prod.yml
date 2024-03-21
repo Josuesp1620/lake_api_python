@@ -1,0 +1,33 @@
+name: Deploy LakeApi Prod
+on:
+  push:
+    branches: [ "main" ]
+jobs:
+
+  build:
+
+    runs-on: self-hosted
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    # Paso para descargar y descomprimir el archivo data_lakeapi_atu.zip
+    - name: Download and extract data_lakeapi_atu.zip
+      run: |
+        if [ ! -d "data" ]; then
+          mkdir data
+          wget -O data/data_lakeapi_atu.zip https://geosolution.ddns.net/files/data_lakeapi_atu.zip
+          unzip -o data/data_lakeapi_atu.zip -d data/
+        fi
+
+    # Pasos para detener y eliminar contenedores Docker
+    - name: Stop and remove container
+      run: sudo docker stop backend_atu_lake_api && docker rm backend_atu_lake_api || true
+
+    # Pasos para eliminar imágenes Docker
+    - name: Remove Docker image
+      run: sudo docker rmi -f backend_atu_lake_api || true
+
+    # Pasos para ejecutar docker-compose
+    - name: Run docker-compose
+      run: sudo docker compose -f docker-compose-lake-api.yml up -d
