@@ -6,7 +6,7 @@ services:
     build: .
     image: backend_atu_lake_api
     ports:
-      - "3055:3055"
+      - "3072:3072"
     volumes:
       - ./data:/opt/atu_lake_api/data
       - ./config.yml:/opt/atu_lake_api/config.yml
