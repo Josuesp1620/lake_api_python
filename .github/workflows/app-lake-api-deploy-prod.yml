@@ -15,9 +15,8 @@ jobs:
     - name: Download and extract data_lakeapi_atu.zip
       run: |
         if [ ! -d "data" ]; then
-          mkdir data
           wget -O data/data_lakeapi_atu.zip https://geosolution.ddns.net/files/data_lakeapi_atu.zip
-          unzip -o data/data_lakeapi_atu.zip -d data/
+          unzip data_lakeapi_atu.zip
         fi
 
     # Pasos para detener y eliminar contenedores Docker
