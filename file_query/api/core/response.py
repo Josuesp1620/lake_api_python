@@ -238,6 +238,7 @@ async def create_response(
     sql: QueryBuilder | str,
     basic_config: BasicConfig,
     close_context=False,
+    file_name = "ATU-BIG-DATA",
 ):
     headers = {}
 
@@ -245,7 +246,7 @@ async def create_response(
 
     format, extension = await parse_format(accept)
     content_dispositiont_type = "attachment"
-    filename = "file" + extension
+    filename = file_name + extension
     media_type = "text/csv" if extension == ".csv" else mimetypes.guess_type("file" + extension)[0]
 
     if format == OutputFormats.JSON:

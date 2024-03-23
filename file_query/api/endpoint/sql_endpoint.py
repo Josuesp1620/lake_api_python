@@ -135,16 +135,17 @@ def create_sql_endpoint(
         background_tasks: BackgroundTasks,
         sql: str,
         Accept: Union[str, None] = Header(default=None),
-        format: Optional[OutputFileType] = "json",
+        format: Optional[OutputFileType] = "json",        
         engine: Engines = Query(
             title="$engine",
             alias="$engine",
             default="duckdb",
             include_in_schema=False,
         ),
+        file_name: Optional[str] = Query("ATU-BIG-DATA", title="File Name", description="Name of the file")
     ):
+        print(file_name)
         con = _get_sql_context(engine, basic_config, configs)
-
         df = con.execute_sql(sql)
         return await create_response(
             request.url,
@@ -153,4 +154,5 @@ def create_sql_endpoint(
             sql,
             basic_config=basic_config,
             close_context=False,
+            file_name=file_name
         )
