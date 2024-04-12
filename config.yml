@@ -4,72 +4,72 @@ app:
   version: '0.1'
 
 tables:
-  - name: parquet_data_mayo_2019
-    tag: source_target
-    version: 1
-    api_method:
-    - post
-    datasource:
-      uri: parquet/parquet_data_mayo_2019_index.parquet
-      file_type: parquet
+- name: parquet_data_mayo_2019
+  tag: source_target
+  version: 1
+  api_method:
+  - post
+  datasource:
+    uri: parquet/parquet_data_mayo_2019_index.parquet
+    file_type: parquet
 
-  - name: macrozonas
-    tag: data_centroid
-    version: 1
-    api_method:
-    - post
-    datasource:
-      uri: geoparquet/data_macrozonas_centroid.parquet
-      file_type: parquet
-    params:
-      - name: taz
-        operators:
-          - "="
-          - in
-          
-  - name: mesozonas
-    tag: data_centroid
-    version: 1
-    api_method:
-    - post
-    datasource:
-      uri: geoparquet/data_mesozonas_centroid.parquet
-      file_type: parquet
-    params:
-      - name: taz
-        operators:
-          - "="
-          - in
+- name: macrozonas
+  tag: data_centroid
+  version: 1
+  api_method:
+  - post
+  datasource:
+    uri: geoparquet/data_macrozonas_centroid.parquet
+    file_type: parquet
+  params:
+  - name: taz
+    operators:
+    - '='
+    - in
 
-  - name: microzonas
-    tag: data_centroid
-    version: 1
-    api_method:
-    - post
-    datasource:
-      uri: geoparquet/data_microzonas_centroid.parquet
-      file_type: parquet
-    params:
-      - name: taz
-        operators:
-          - "="
-          - in
+- name: mesozonas
+  tag: data_centroid
+  version: 1
+  api_method:
+  - post
+  datasource:
+    uri: geoparquet/data_mesozonas_centroid.parquet
+    file_type: parquet
+  params:
+  - name: taz
+    operators:
+    - '='
+    - in
 
-  - name: distritos
-    tag: data_centroid
-    version: 1
-    api_method:
-    - post
-    datasource:
-      uri: geoparquet/data_distritos_centroid.parquet
-      file_type: parquet
-    params:
-      - name: taz
-        operators:
-          - "="
-          - in
+- name: microzonas
+  tag: data_centroid
+  version: 1
+  api_method:
+  - post
+  datasource:
+    uri: geoparquet/data_microzonas_centroid.parquet
+    file_type: parquet
+  params:
+  - name: taz
+    operators:
+    - '='
+    - in
+
+- name: distritos
+  tag: data_centroid
+  version: 1
+  api_method:
+  - post
+  datasource:
+    uri: geoparquet/data_distritos_centroid.parquet
+    file_type: parquet
+  params:
+  - name: taz
+    operators:
+    - '='
+    - in
 
 users:
-- name: joucode
+- name: ATU_BIG_DATA
   passwordhash: 
-    $argon2id$v=19$m=65536,t=3,p=4$uIUoC3PD2QkUrDL9VbrEVA$+3RdA6YsrAMu9ku8NkoP3J7tFRy2XWTESKrqMMyVsqA
+    $argon2id$v=19$m=65536,t=3,p=4$ms0PAqdYAdhR9EVd5sFq1Q$72E0AKfv2X7jOu+ouRDqaOXAxRXNFnhcdO4fZMS1ecY
